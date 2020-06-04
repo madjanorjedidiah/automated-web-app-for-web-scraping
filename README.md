@@ -1,14 +1,15 @@
 # automated-web-app-for-web-scraping
 
-## Download app into local repository.
 
-## Within your django virtual environment make sure you have the rquirements.txt installed.
+### Download app into local repository.
 
-## Start app in django environment with python manage.py runserver.
+### Within your django virtual environment make sure you have the rquirements.txt installed.
 
-## start celery worker with celery -A conap worker -l info
+### Start app in django environment with python manage.py runserver.
 
-## start celery scheduler with celery -A conap beat --loglevel=info
+### start celery worker with celery -A conap worker -l info
 
-## After you should have this app running.
+### start celery scheduler with celery -A conap beat --loglevel=info
+
+### After you should have this app running.
 
