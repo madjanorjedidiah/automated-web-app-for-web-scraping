@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Real Estates Generator</title>
+
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+  
+
+  	
+</head>
+<body>
+    <div><h3 style="text-align: center;"> SCRAPED DATA </h3></div>
+    <div style=" margin: 3% 3%;">
+
+        <table id="table_id" class="display" style="width:100%">
+            <thead>
+                <tr role="row">
+                    <!-- <th></th> -->
+                    <th>Property Name</th>
+                    <th>Beds</th>
+                    <th>Garages</th>
+                    <th>Showers</th>
+                    <th>Area</th>
+                    <th>Price</th>    
+                    <th>Currency</th>
+                    <th>Rent Period</th>
+                    <th>Url</th>      
+                    <th>Time Posted</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aa in real_estate %}
+                <tr  >
+                    <!-- <td>
+                         <a href="/mapapp/?code={{aa.id}}" target="_blank"> <button id="aa.id" class="btn btn-danger"> view location</button> </a>   
+                    </td> -->
+                   
+                    <td>{{aa.property }}</td>
+                    <td>{{aa.showers }}</td>
+                    <td>{{aa.beds}}</td>
+                    <td>{{aa.garages}}</td>
+                     <td>{{aa.area}}</td>
+                     <td>{{aa.price}}</td>
+                    <td>{{aa.currency}}</td>
+                     <td>{{aa.rent_period}}</td>
+                     <td>{{aa.url}}</td>
+                    <td>{{aa.time_posted}}</td>                             
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="margin-top: 10px; width:80px; border:5px; border-radius: 5px; background-color: blue; text-align: center;">
+            <a href="{% url 'conap:save' %}" style="color:white;"> UPDATE </a> 
+        </div>
+        <div>
+             {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <!-- <li style="color:green;" {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li> -->
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>{{ message }}!</strong> 
+                   </div>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+        </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/autofill/2.3.5/js/dataTables.autoFill.min.js"></script>
+
+<script type="text/javascript">
+
+
+    $(document).ready( function () {
+        $('#table_id').DataTable();
+
+        } );
+   
+</script>
+</body>
+</html>
